@@ -1,5 +1,6 @@
-const url = "http://localhost:8000/api/rollos"
-const urlC = "http://localhost:8000/api/categorias"
+const url = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/rollos"
+const urlC = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/categorias"
+const urlP = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/Promociones"
 
 export const obtainRollos = async ()=>{
     try {
@@ -18,6 +19,16 @@ export const obtainCategorias = async ()=>{
         return categorias;
     } catch (error) {
         console.error("error al obtener las categorias");
+    }
+}
+
+export const obtainPromociones = async ()=>{
+    try {
+        const resultadoPromociones = await fetch(urlP);
+        const Promociones = await resultadoPromociones.json();
+        return Promociones;
+    } catch (error) {
+        console.error("error al obtener las Promociones");
     }
 }
 
