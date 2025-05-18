@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Iki Sushi - El mejor sushi de la ciudad"/>
+    <meta name="Description" content="Iki Sushi - El mejor sushi de la ciudad" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Iki Sushi & Pokes</title>
 </head>
+
 <body>
     <!-- Canvas para partículas y dragón -->
     <div id="particles-container"></div>
     <div id="dragon-container"></div>
-    
+
     <!-- HEADER / NAVEGACIÓN -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -51,44 +53,15 @@
     <!-- CARRUSEL DE PROMOCIONES -->
     <section class="carousel-section" id="promociones">
         <div id="carouselPromos" class="carousel slide" data-ride="carousel">
-            <!-- Indicadores -->
+            <!-- Indicadores (dinámico) -->
             <ol class="carousel-indicators">
-                <li data-target="#carouselPromos" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselPromos" data-slide-to="1"></li>
-                <li data-target="#carouselPromos" data-slide-to="2"></li>
+                <!-- Los indicadores se generarán automáticamente -->
             </ol>
 
-            <!-- Contenido del carrusel -->
+            <!-- Contenido del carrusel (dinámico) -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="promo-image">
-                        <img src="img/sushi_cervesa_promo1.jpeg" alt="Promoción sushi y cerveza">
-                        <div class="carousel-caption">
-                            <h3 class="glow-text">Sushi + Cerveza</h3>
-                            <p>¡Disfruta de nuestra promoción especial!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="promo-image">
-                        <img src="img/Combo_pareja_promo2.jpeg" alt="Combo para parejas">
-                        <div class="carousel-caption">
-                            <h3 class="glow-text">Combo Pareja</h3>
-                            <p>Perfecto para compartir con esa persona especial</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="promo-image">
-                        <img src="img/Combo_servesa_promo3.jpeg" alt="Combo cerveza">
-                        <div class="carousel-caption">
-                            <h3 class="glow-text">Combo Cerveza</h3>
-                            <p>La combinación perfecta</p>
-                        </div>
-                    </div>
-                </div>
+                <!-- Las promociones se cargarán aquí desde promociones.js -->
             </div>
-                
             <!-- Controles -->
             <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,14 +84,14 @@
         </div>
     </section>
 
-   <!-- SECCIÓN DE ROLLOS -->
+    <!-- SECCIÓN DE ROLLOS -->
     <section id="rollos" class="rollos-section">
         <div class="container">
             <h2 class="section-title glow-text">Rollos Premium</h2>
             <div class="filtros-container">
                 <select class="custom-select" id="filtro-categoria">
                     <option value="">Todas las categorías</option>
-                        <!-- Opciones dinámicas -->
+                    <!-- Opciones dinámicas -->
                 </select>
                 <select class="custom-select" id="filtro-precio">
                     <option value="">Ordenar por precio</option>
@@ -168,7 +141,8 @@
                                 <h5 class="red-text">Precio: $<span id="modal-rollo-precio"></span></h5>
                                 <div class="cantidad-container">
                                     <label for="modal-rollo-cantidad">Cantidad:</label>
-                                    <input type="number" id="modal-rollo-cantidad" value="1" min="1" class="form-control">
+                                    <input type="number" id="modal-rollo-cantidad" value="1" min="1"
+                                        class="form-control">
                                 </div>
                             </div>
                             <div class="calificacion">
@@ -185,13 +159,14 @@
                     </div>
                     <!-- Espacio vacío para contenido generado dinámicamente -->
                     <div id="rollos-detalles-adicionales">
-                        
+
                     </div>
-                   
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary neon-btn" id="btn-agregar-carrito">Agregar al carrito</button>
+                    <button type="button" class="btn btn-primary neon-btn" id="btn-agregar-carrito">Agregar al
+                        carrito</button>
                 </div>
             </div>
         </div>
@@ -214,7 +189,8 @@
                 <div class="col-md-4">
                     <h5 class="neon-text">Síguenos</h5>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/ikisushi.co" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/ikisushi.co" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
@@ -234,8 +210,9 @@
     <script type="module" src="js/rollos.js"></script>
     <script type="module" src="js/dragon.js"></script>
     <script type="module" src="js/particulas.js"></script>
-    <script type="module" src="js/categorias.js"></script>   
+    <script type="module" src="js/categorias.js"></script>
     <script type="module" src="js/promociones.js"></script>
 
 </body>
+
 </html>
