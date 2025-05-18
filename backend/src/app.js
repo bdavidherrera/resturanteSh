@@ -4,6 +4,7 @@ import express, { request } from "express";
 import categoriasRoutes from "./routers/categorias.routes.js"
 import rollosRoutes from "./routers/rollos.routes.js"
 import usuariosRoutes from "./routers/usuarios.routes.js"
+import promocionesRoutes from "./routers/promociones.routes.js"
 import cors from "cors"
 
 /*Asignamos a app toda funcionalidad para mi server web */
@@ -20,6 +21,8 @@ app.use("/api/categorias",categoriasRoutes)
 app.use("/api/rollos", rollosRoutes)
 
 app.use("/admin", usuariosRoutes)
+
+app.use("/api/Promociones", promocionesRoutes)
 
 
 app.get("/",(req,res)=>{
