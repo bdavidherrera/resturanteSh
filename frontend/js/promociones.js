@@ -1,5 +1,7 @@
 import { obtainPromociones } from "../apiConnection/consumeApi.js";
 
+
+
 // Función principal para mostrar las promociones
 export const mostrarPromociones = async () => {
     try {
@@ -63,9 +65,9 @@ const crearSlidePromocion = (promo, esActivo) => {
     
     slide.innerHTML = `
         <div class="promo-image">
-            <img src="img/${promo.imagen}" alt="${promo.titulo}" class="img-fluid">
+            <img src="img/${promo.imagen}" alt="${promo.nombre}" class="img-fluid">
             <div class="carousel-caption">
-                <h3 class="glow-text">${promo.titulo}</h3>
+                <h3 class="glow-text">${promo.nombre}</h3>
                 <p>${promo.descripcion || '¡Promoción especial!'}</p>
                 ${promo.precio ? `<div class="promo-price neon-text">$${promo.precio}</div>` : ''}
             </div>
@@ -87,6 +89,3 @@ const crearIndicadorPromocion = (index) => {
 
 // Ejecutar la función principal cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', mostrarPromociones);
-
-
-
