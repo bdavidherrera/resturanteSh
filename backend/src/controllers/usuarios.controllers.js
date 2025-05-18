@@ -3,7 +3,7 @@ import getConnection from "../db/database.js"
 const getUsuarios = async (req, res)=>{
     try {
         const connection = await getConnection();
-        const result= await connection.query("SELECT * FROM usuarios")
+        const result= await connection.query("SELECT * FROM clientes")
         res.json(result) 
     } catch (error) {
         console.error("ERROR 500");
