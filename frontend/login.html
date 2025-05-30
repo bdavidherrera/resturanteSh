@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Iki Sushi - Iniciar sesión" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Iki Sushi & Pokes - Login</title>
+</head>
+
+<body>
+    <!-- Canvas para partículas y dragón -->
+    <div id="particles-container"></div>
+    <div id="dragon-container"></div>
+
+    <!-- FORMULARIO DE LOGIN -->
+    <section class="login-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="login-card">
+                        <!-- Logo -->
+                        <div class="text-center mb-4">
+                            <img src="img/logo_sushi_v.png" alt="Logo" class="logo-img">
+                        </div>
+                        
+                        <h2 class="text-center mb-4 glow-text">Iniciar Sesión</h2>
+                        
+                        <!-- Formulario -->
+                        <form id="loginForm" action="Login" method="POST">
+                            <div class="form-group">
+                                <label for="email" class="neon-text">Correo Electrónico</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-dark border-red">
+                                            <i class="fas fa-envelope red-icon"></i>
+                                        </span>
+                                    </div>
+                                    <input type="email" class="form-control" id="correo" required placeholder="tucorreo@example.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password" class="neon-text">Contraseña</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-dark border-red">
+                                            <i class="fas fa-lock red-icon"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" id="contraseña" required placeholder="••••••••">
+                                </div>
+                            </div>
+                            
+                            
+                            <button type="submit" class="btn btn-block neon-btn">Ingresar</button>
+                            
+                            
+                        </form>
+                        
+                        <div class="text-center mt-4">
+                            <p class="neon-text">¿No tienes una cuenta? <a href="registrar.html" class="red-text">Regístrate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="neon-text">Iki Sushi & Pokes</h5>
+                    <p>El mejor sushi de la ciudad, con ingredientes frescos y sabores únicos.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Contáctanos</h5>
+                    <p><i class="fas fa-map-marker-alt red-icon"></i> Dirección: Calle Principal #123</p>
+                    <p><i class="fas fa-phone red-icon"></i> Teléfono: (123) 456-7890</p>
+                    <p><i class="fas fa-envelope red-icon"></i> Email: info@ikisushi.co</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ikisushi.co" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Iki Sushi & Pokes. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="js/particulas.js"></script>
+    <script type="module" src="js/usuarios.js"></script>
+     
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Iki Sushi - El mejor sushi de la ciudad" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Iki Sushi & Pokes</title>
+</head>
+
+<body>
+    <!-- Canvas para partículas y dragón -->
+    <div id="particles-container"></div>
+    <div id="dragon-container"></div>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="https://www.instagram.com/ikisushi.co?igsh=bjh2dThjeXFoa3Z4">
+                    <img src="img/logo_sushi_v.png" alt="Logo" class="logo-img">
+                </a>
+                <!-- Botón para móviles -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#categorias">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#rollos">Rollos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#calificaciones">Calificaciones</a>
+                        </li>
+                    </ul>
+                    <!-- Botones de acción -->
+                    <a href="#promociones" class="btn btn-custom ml-3 neon-btn">Promociones</a>
+                    <button class="btn btn-login ml-2 neon-btn-secondary" id="btn-iniciar-sesion">
+                        <i class="fas fa-user-circle"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CARRUSEL DE PROMOCIONES -->
+    <section class="carousel-section" id="promociones">
+        <div id="carouselPromos" class="carousel slide" data-ride="carousel">
+            <!-- Indicadores (dinámico) -->
+            <ol class="carousel-indicators">
+                <!-- Los indicadores se generarán automáticamente -->
+            </ol>
+
+            <!-- Contenido del carrusel (dinámico) -->
+            <div class="carousel-inner">
+                <!-- Las promociones se cargarán aquí desde promociones.js -->
+            </div>
+            <!-- Controles -->
+            <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselPromos" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <section id="categorias" class="categorias-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Nuestras Categorías</h2>
+            <div class="row" id="categorias-container">
+                <!-- Aquí se cargarán dinámicamente las categorías desde la base de datos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE ROLLOS -->
+    <section id="rollos" class="rollos-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Rollos Premium</h2>
+            <div class="filtros-container">
+                <select class="custom-select" id="filtro-categoria">
+                    <option value="">Todas las categorías</option>
+                    <!-- Opciones dinámicas -->
+                </select>
+                <select class="custom-select" id="filtro-precio">
+                    <option value="">Ordenar por precio</option>
+                    <option value="asc">Menor precio</option>
+                    <option value="desc">Mayor precio</option>
+                </select>
+            </div>
+            <div class="row" id="rollos-container">
+                <!-- Aquí se cargarán dinámicamente los rollos desde la base de datos en formato de cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CALIFICACIONES -->
+    <section id="calificaciones" class="calificaciones-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Calificaciones de Clientes</h2>
+            <div class="text-center mb-4">
+                <p class="text-muted">¿Quieres dejar tu calificación? 
+                    <button class="btn btn-link p-0 neon-text" id="btn-calificar-login">
+                        <i class="fas fa-star"></i> Inicia sesión aquí
+                    </button>
+                </p>
+            </div>
+            <div class="row" id="calificaciones-container">
+                <!-- Aquí se cargarán dinámicamente las calificaciones desde la base de datos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE DETALLE DE ROLLO -->
+    <div class="modal fade" id="rolloModal" tabindex="-1" aria-labelledby="rolloModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content modal-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title glow-text" id="rolloModalLabel">Detalle del Rollo</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="modal-image-container">
+                                <img id="modal-rollo-imagen" src="" alt="Imagen del rollo" class="img-fluid rounded shadow-lg">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modal-rollo-nombre" class="neon-text mb-3"></h4>
+                            <div class="descripcion-container mb-3">
+                                <h6 class="red-text"><i class="fas fa-info-circle"></i> Descripción:</h6>
+                                <p id="modal-rollo-descripcion" class="text-light"></p>
+                            </div>
+                            <div class="ingredientes-container mb-3">
+                                <h6 class="red-text"><i class="fas fa-list-ul"></i> Ingredientes:</h6>
+                                <div id="modal-rollo-ingredientes" class="ingredientes-list">
+                                    <!-- Los ingredientes se cargarán aquí con iconos -->
+                                </div>
+                            </div>
+                            <div class="precio-container mb-3">
+                                <h5 class="precio-display">
+                                    <i class="fas fa-tag red-icon"></i> 
+                                    Precio: <span class="neon-text">$<span id="modal-rollo-precio"></span></span>
+                                </h5>
+                            </div>
+                            <div class="calificacion-container">
+                                <h6 class="red-text"><i class="fas fa-star"></i> Calificación:</h6>
+                                <div class="rating-display">
+                                    <div id="estrellas-container" class="estrellas-grandes">
+                                        <!-- Estrellas se generarán dinámicamente -->
+                                    </div>
+                                    <span id="modal-rollo-calificacion" class="rating-numero"></span>
+                                </div>
+                            </div>
+                            <div class="disponibilidad-container mt-3">
+                                <span class="badge badge-success" id="modal-disponibilidad">
+                                    <i class="fas fa-check-circle"></i> Disponible
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fas fa-times"></i> Cerrar
+                    </button>
+                    <button type="button" class="btn btn-outline-warning" id="btn-calificar-modal">
+                        <i class="fas fa-star"></i> Calificar este rollo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE INICIO DE SESIÓN REQUERIDO -->
+    <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title glow-text" id="loginRequiredModalLabel">
+                        <i class="fas fa-lock"></i> Iniciar Sesión Requerido
+                    </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="login-icon mb-3">
+                        <i class="fas fa-user-lock fa-4x neon-text"></i>
+                    </div>
+                    <h4 class="mb-3 text-light">¡Necesitas iniciar sesión!</h4>
+                    <p class="text-muted mb-4">
+                        Para poder calificar nuestros deliciosos rollos y acceder a funciones exclusivas, 
+                        necesitas tener una cuenta en Iki Sushi.
+                    </p>
+                    <div class="benefits-list mb-4">
+                        <p class="text-light"><i class="fas fa-star text-warning"></i> Califica y comenta rollos</p>
+                        <p class="text-light"><i class="fas fa-heart text-danger"></i> Guarda tus favoritos</p>
+                        <p class="text-light"><i class="fas fa-gift text-success"></i> Accede a promociones exclusivas</p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="fas fa-times"></i> Cancelar
+                    </button>
+                    <button type="button" class="btn neon-btn" id="btn-ir-login">
+                        <i class="fas fa-sign-in-alt"></i> Ir al Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="neon-text">Iki Sushi & Pokes</h5>
+                    <p>El mejor sushi de la ciudad, con ingredientes frescos y sabores únicos.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Contáctanos</h5>
+                    <p><i class="fas fa-map-marker-alt red-icon"></i> Dirección: Calle Principal #123</p>
+                    <p><i class="fas fa-phone red-icon"></i> Teléfono: (123) 456-7890</p>
+                    <p><i class="fas fa-envelope red-icon"></i> Email: info@ikisushi.co</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ikisushi.co" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Iki Sushi & Pokes. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="js/rollos.js"></script>
+    <script type="module" src="js/categorias.js"></script>
+    <script type="module" src="js/promociones.js"></script>
+    <script type="module" src="js/calificaciones.js"></script>
+    <script>
+        // Script para manejar redirecciones al login
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botón principal de iniciar sesión
+            document.getElementById('btn-iniciar-sesion')?.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+
+            // Botón de calificar en la sección de calificaciones
+            document.getElementById('btn-calificar-login')?.addEventListener('click', function() {
+                $('#loginRequiredModal').modal('show');
+            });
+
+            // Botón de calificar en el modal de detalle
+            document.getElementById('btn-calificar-modal')?.addEventListener('click', function() {
+                $('#rolloModal').modal('hide');
+                setTimeout(() => {
+                    $('#loginRequiredModal').modal('show');
+                }, 300);
+            });
+
+            // Botón para ir al login desde el modal de requerimiento
+            document.getElementById('btn-ir-login')?.addEventListener('click', function() {
+                window.location.href = 'login.html';
+            });
+        });
+    </script>
+
+</body>
+
+</html>

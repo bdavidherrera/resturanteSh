@@ -1,0 +1,240 @@
+<!--No tiene nada el que me mando-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Iki Sushi - El mejor sushi de la ciudad" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Iki Sushi & Pokes</title>
+</head>
+
+<body>
+    
+    <!-- HEADER / NAVEGACIÓN -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand" href="https://www.instagram.com/ikisushi.co?igsh=bjh2dThjeXFoa3Z4">
+                    <img src="img/logo_sushi_v.png" alt="Logo" class="logo-img">
+                </a>
+                <!-- Botón para móviles -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Menú -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#categorias">Categorías</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#rollos">Rollos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link neon-text" href="#calificaciones">Calificaciones</a>
+                        </li>
+                    </ul>
+                    <!-- Botones de acción -->
+                    <a href="#promociones" class="btn btn-custom ml-3 neon-btn">Promociones</a>
+                    <a href="#" class="btn btn-custom ml-3 neon-btn" id="btnCerrarSesion">Cerrar Secion</a>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CARRUSEL DE PROMOCIONES -->
+    <section class="carousel-section" id="promociones">
+        <div id="carouselPromos" class="carousel slide" data-ride="carousel">
+            <!-- Indicadores (dinámico) -->
+            <ol class="carousel-indicators">
+                <!-- Los indicadores se generarán automáticamente -->
+            </ol>
+
+            <!-- Contenido del carrusel (dinámico) -->
+            <div class="carousel-inner">
+                <!-- Las promociones se cargarán aquí desde promociones.js -->
+            </div>
+            <!-- Controles -->
+            <a class="carousel-control-prev" href="#carouselPromos" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselPromos" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CATEGORÍAS -->
+    <section id="categorias" class="categorias-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Nuestras Categorías</h2>
+            <div class="row" id="categorias-container">
+                <!-- Aquí se cargarán dinámicamente las categorías desde la base de datos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE ROLLOS -->
+    <section id="rollos" class="rollos-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Rollos Premium</h2>
+            <div class="filtros-container">
+                <select class="custom-select" id="filtro-categoria">
+                    <option value="">Todas las categorías</option>
+                    <!-- Opciones dinámicas -->
+                </select>
+                <select class="custom-select" id="filtro-precio">
+                    <option value="">Ordenar por precio</option>
+                    <option value="asc">Menor precio</option>
+                    <option value="desc">Mayor precio</option>
+                </select>
+            </div>
+            <div class="row" id="rollos-container">
+                <!-- Aquí se cargarán dinámicamente los rollos desde la base de datos en formato de cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE CALIFICACIONES -->
+    <section id="calificaciones" class="calificaciones-section">
+        <div class="container">
+            <h2 class="section-title glow-text">Calificaciones de Clientes</h2>
+            <div class="row" id="calificaciones-container">
+                <!-- Aquí se cargarán dinámicamente las calificaciones desde la base de datos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE DETALLE DE ROLLO -->
+    <div class="modal fade" id="rolloModal" tabindex="-1" aria-labelledby="rolloModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title glow-text" id="rolloModalLabel">Detalle del Rollo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img id="modal-rollo-imagen" src="" alt="Imagen del rollo" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="modal-rollo-nombre" class="neon-text"></h4>
+                            <p id="modal-rollo-descripcion"></p>
+                            <div class="ingredientes">
+                                <h5 class="red-text">Ingredientes:</h5>
+                                <p id="modal-rollo-ingredientes"></p>
+                            </div>
+                            <div class="precio-cantidad">
+                                <h5 class="red-text">Precio: $<span id="modal-rollo-precio"></span></h5>
+                                <div class="cantidad-container">
+                                    <label for="modal-rollo-cantidad">Cantidad:</label>
+                                    <input type="number" id="modal-rollo-cantidad" value="1" min="1"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="calificacion">
+                                <h5 class="red-text">Calificación: <span id="modal-rollo-calificacion"></span>/5</h5>
+                                <div id="estrellas-container">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Espacio vacío para contenido generado dinámicamente -->
+                    <div id="rollos-detalles-adicionales">
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary neon-btn" id="btn-agregar-carrito">Agregar al
+                        carrito</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="neon-text">Iki Sushi & Pokes</h5>
+                    <p>El mejor sushi de la ciudad, con ingredientes frescos y sabores únicos.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Contáctanos</h5>
+                    <p><i class="fas fa-map-marker-alt red-icon"></i> Dirección: Calle Principal #123</p>
+                    <p><i class="fas fa-phone red-icon"></i> Teléfono: (123) 456-7890</p>
+                    <p><i class="fas fa-envelope red-icon"></i> Email: info@ikisushi.co</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="neon-text">Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/ikisushi.co" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Iki Sushi & Pokes. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script type="module" src="js/rollos.js"></script>
+    <script type="module" src="js/categorias.js"></script>
+    <script type="module" src="js/promociones.js"></script>
+    <script type="module" src="js/calificaciones.js"></script>
+    <script>
+  document.getElementById("btnCerrarSesion").addEventListener("click", (e) => {
+    e.preventDefault(); 
+
+    sessionStorage.clear(); 
+
+    window.location.href = "login.html";
+  });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const idUsuario = sessionStorage.getItem("idUsuario");
+  const role = sessionStorage.getItem("rol");
+  
+  if (!idUsuario || role !== "cliente") {
+    // Si no hay idUsuario o el rol no es cliente, redirigir al login
+    alert("Debes iniciar sesión para acceder a esta página y ser cliente.");
+    window.location.href = "login.html"; 
+  }
+});
+</script>
+
+</body>
+
+
+</html>
+
