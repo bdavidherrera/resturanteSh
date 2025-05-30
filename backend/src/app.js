@@ -25,7 +25,7 @@ app.use(cors());
 
 app.use("/api/categorias",categoriasRoutes) //Mostrar categorias y ingresarlas(desde admin)
 
-app.use("/api/rollos", rollosRoutes)
+app.use("/api/rollos", rollosRoutes) //Mostrar, registrar rollos
 
 
 app.use("/api/Promociones", promocionesRoutes)//Mostrar promociones de los rollos en Admin y clientes y ingresarlos

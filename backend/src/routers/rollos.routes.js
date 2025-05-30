@@ -7,5 +7,6 @@ const router = Router();
 /*get */
 /*Configuramos respuesta desde server metodo http get */
 router.get("/", rollosController.getRollos);
+router.post("/RegistrarRollos", rollosController.postRollos);
 
 export default router;
