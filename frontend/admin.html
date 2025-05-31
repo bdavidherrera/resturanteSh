@@ -522,7 +522,7 @@
                                     <h5 class="modal-title">Agregar Nuevo Rollo</h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="addRolloForm" action="php/insert_rollo.php" method="POST" enctype="multipart/form-data">
+                                <form id="addRolloForm" action="/api/rollos/RegistrarRollos" method="POST" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -556,7 +556,8 @@
                                                     <label for="rolloCategoria" class="form-label">Categoría</label>
                                                     <select class="form-select" id="rolloCategoria" name="id_categoria" required>
                                                         <option value="">Seleccionar categoría</option>
-                                                        <!-- Las opciones se llenarán dinámicamente -->
+                                                        <option value="1">1</option>
+
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">

@@ -1,11 +1,15 @@
-import { obtainRollos } from "../../apiConnection/consumeApi.js";
+import { obtainRollos, RegistrarRollosA} from "../../apiConnection/consumeApi.js";
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaRollos = document.querySelector('#Rollos-tbody')
+    const registrarRollos = document.querySelector("#addRolloForm")
     if(tablaRollos){
         getRollos(),
         mostrarTotalRollos();
+    }
+    if(registrarRollos){
+        registrarRollosAdmin();
     }
 })
 
@@ -81,4 +85,45 @@ async function mostrarTotalRollos() {
     }
 
     return total;
+}
+
+
+async function registrarRollosAdmin() {
+    const formAgregarRollos = document.getElementById("#addRolloForm");
+
+    formAgregarRollos.addEventListener("submit", async (e) => {
+        e.preventDefault(); 
+        const inputImagen = document.getElementById("rolloImagen");
+        const fileName= inputImagen.files[0]?.name || "";
+
+        const datosRollos = {
+            nombre: document.getElementById("rolloNombre").value,
+            descripccion: document.getElementById("rolloDescripcion").value,
+            ingredientes: document.getElementById("rolloIngredientes").value,
+            cantidad: document.getElementById("rolloCantidad").value,
+            calificacion: document.getElementById("rolloCalificacion").value,
+            precio: document.getElementById("precio").value,
+            id_categoria: document.getElementById("id_categoria").value,
+            imagen: fileName
+        };
+
+        try {
+            const resultado = await RegistrarRollosA(datosRollos);
+           if (resultado) {
+                alert("Rollos registrada con éxito.");
+                formAgregarRollos.reset();
+                const modalElement = document.getElementById('addRolloModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) modal.hide();
+                getRollos();
+                mostrarTotalRollos();
+            } else {
+                console.log("El resultado no fue válido:", resultado);
+                }
+
+        } catch (error) {
+            console.error("Error en el registro:", error);
+            alert("Hubo un error al registrar el rollo.");
+        }
+    });
 }

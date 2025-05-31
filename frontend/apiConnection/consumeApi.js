@@ -1,5 +1,6 @@
-const url = "http://localhost:8000/api/rollos"
 //Rollos de la API
+const url = "http://localhost:8000/api/rollos"
+const urlRollos = "http://localhost:8000/api/rollos/RegistrarRollos"
 //Categorias de la API
 const urlC = "http://localhost:8000/api/categorias"
 const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
@@ -22,6 +23,26 @@ export const obtainRollos = async ()=>{
         return rollos;
     } catch (error) {
         console.error("error al obtener los rollos");
+    }
+}
+
+export const RegistrarRollosA = async (datosRollos) => {
+    try {
+        const response = await fetch(`${urlRollos}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosRollos)
+            
+        });
+        
+        
+        const resultado = await response.json();
+        return resultado;
+        
+    } catch (error) {
+        console.error("Error al registrar rollos:", error);
     }
 }
 
@@ -82,6 +103,8 @@ export const registrarPromociones = async (datosPromocion) => {
         console.error("Error al registrar Promocion:", error);
     }
 }
+
+
 
 
 export const obtainCalificaciones = async ()=>{
@@ -154,6 +177,7 @@ export const obtainUsuarios = async ()=>{
         console.error("error al obtener los usuarios");
     }
 }
+
 
 
 
