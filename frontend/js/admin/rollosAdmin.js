@@ -1,15 +1,17 @@
 import { obtainRollos, RegistrarRollosA} from "../../apiConnection/consumeApi.js";
 
 
+ 
+
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaRollos = document.querySelector('#Rollos-tbody')
-    const registrarRollos = document.querySelector("#addRolloForm")
+    const registrarRollosAdmins= document.querySelector('#addRolloForm')
     if(tablaRollos){
         getRollos(),
         mostrarTotalRollos();
     }
-    if(registrarRollos){
-        registrarRollosAdmin();
+    if(registrarRollosAdmins){
+        registrarRollosAdmin(registrarRollosAdmins);
     }
 })
 
@@ -71,9 +73,6 @@ container.appendChild(row);
 })
 }
 
-
-
-
 async function mostrarTotalRollos() {
     const rollosObtained = await obtainRollos();
     const total = rollosObtained.length;
@@ -87,9 +86,7 @@ async function mostrarTotalRollos() {
     return total;
 }
 
-
-async function registrarRollosAdmin() {
-    const formAgregarRollos = document.getElementById("#addRolloForm");
+async function registrarRollosAdmin(formAgregarRollos) {
 
     formAgregarRollos.addEventListener("submit", async (e) => {
         e.preventDefault(); 
@@ -102,8 +99,8 @@ async function registrarRollosAdmin() {
             ingredientes: document.getElementById("rolloIngredientes").value,
             cantidad: document.getElementById("rolloCantidad").value,
             calificacion: document.getElementById("rolloCalificacion").value,
-            precio: document.getElementById("precio").value,
-            id_categoria: document.getElementById("id_categoria").value,
+            precio: document.getElementById("rolloPrecio").value,
+            id_categoria: document.getElementById("rolloCategoria").value,
             imagen: fileName
         };
 
@@ -127,3 +124,5 @@ async function registrarRollosAdmin() {
         }
     });
 }
+
+
