@@ -380,7 +380,9 @@
                                     <th>Cédula</th>
                                     <th>Nombre Completo</th>
                                     <th>Correo</th>
+                                    <th>Contraseña</th>
                                     <th>Número</th>
+                                    <th>Estado</th>
                                     <th>Rol</th>
                                     <th>Accion</th>
                                 </tr>
@@ -473,46 +475,46 @@
                         </div>
                     </div>
 
-                <!-- Modal Editar Promoción -->
-                    <div class="modal fade" id="editPromocionModal" tabindex="-1" aria-hidden="true">
-                        <div class="modal-content bg-dark text-white">
-                            <div class="modal-dialog">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Editar Promoción</h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form id="editPromocionForm" action="EditarPromocion" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" id="editPromoId" name="id">
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="editPromoNombre" class="form-label">Nombre</label>
-                                        <input type="text" class="form-control" id="editPromoNombre" name="nombre" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="editPromoDescripcion" class="form-label">Descripción</label>
-                                        <textarea class="form-control" id="editPromoDescripcion" name="descripcion" rows="3"></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="editPromoPrecio" class="form-label">Precio</label>
-                                        <input type="number" class="form-control" id="editPromoPrecio" name="precio" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="editPromoImagen" class="form-label">Imagen (dejar vacío para no cambiar)</label>
-                                        <input type="file" class="form-control" id="editPromoImagen" name="imagen" accept="image/*">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Imagen Actual</label>
-                                        <img id="currentPromoImage" src="" class="img-thumbnail" style="max-height: 100px;">
+                            <!-- Modal Editar Promoción -->
+                            <div class="modal fade" id="editPromocionModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog"> <!-- Este div debe envolver todo el modal-content -->
+                                    <div class="modal-content bg-dark text-white">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Editar Promoción</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form id="editPromocionForm" action="EditarPromocion" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" id="editPromoId" name="id">
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="editPromoNombre" class="form-label">Nombre</label>
+                                                    <input type="text" class="form-control" id="editPromoNombre" name="nombre" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editPromoDescripcion" class="form-label">Descripción</label>
+                                                    <textarea class="form-control" id="editPromoDescripcion" name="descripcion" rows="3"></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editPromoPrecio" class="form-label">Precio</label>
+                                                    <input type="number" class="form-control" id="editPromoPrecio" name="precio" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="editPromoImagen" class="form-label">Imagen (dejar vacío para no cambiar)</label>
+                                                    <input type="file" class="form-control" id="editPromoImagen" name="imagen" accept="image/*">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Imagen Actual</label>
+                                                    <img id="currentPromoImage" src="" class="img-thumbnail" style="max-height: 100px;">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                                </div>
-                            </form>
                             </div>
-                        </div>
-                    </div>
 
                 <!-- Modal Agregar Rollo -->
                     <div class="modal fade" id="addRolloModal" tabindex="-1" aria-hidden="true">
@@ -619,7 +621,7 @@
                                                     <label for="editRolloCategoria" class="form-label">Categoría</label>
                                                     <select class="form-select" id="editRolloCategoria" name="id_categoria" required>
                                                         <option value="">Seleccionar categoría</option>
-                                                        <!-- Las opciones se llenarán dinámicamente -->
+                                                        <option value="1" >1</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
@@ -675,8 +677,8 @@
                                             <div class="mb-3">
                                                 <label for="usuarioEstado" class="form-label">Estado</label>
                                                 <select class="form-select" id="usuarioEstado" name="estado" required>
-                                                    <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
+                                                    <option value="1">activo</option>
+                                                    <option value="0">inactivo</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3">
@@ -695,8 +697,60 @@
                             </div>
                         </div>
 
-                   
-  
+                     <!-- Modal Actualizar Usuario -->
+                            <div class="modal fade" id="updateUsuarioModal" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark text-white">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Actualizar Usuario</h5>
+                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form id="updateUsuarioForm" action="Actualizar" method="POST">
+                                            <input type="hidden" id="updateUsuarioId" name="id">
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioCedula" class="form-label">Cédula</label>
+                                                    <input type="text" class="form-control" id="updateUsuarioCedula" name="cedula">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioNombre" class="form-label">Nombre Completo</label>
+                                                    <input type="text" class="form-control" id="updateUsuarioNombre" name="nombre_completo" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioCorreo" class="form-label">Correo</label>
+                                                    <input type="email" class="form-control" id="updateUsuarioCorreo" name="correo" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioContrasena" class="form-label">Contraseña (dejar en blanco para no cambiar)</label>
+                                                    <input type="password" class="form-control" id="updateUsuarioContrasena" name="contrasena">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioNumero" class="form-label">Número</label>
+                                                    <input type="text" class="form-control" id="updateUsuarioNumero" name="numero">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioEstado" class="form-label">Estado</label>
+                                                    <select class="form-select" id="updateUsuarioEstado" name="estado" required>
+                                                        <option value="1">activo</option>
+                                                        <option value="0">inactivo</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="updateUsuarioRol" class="form-label">Rol</label>
+                                                    <select class="form-select" id="updateUsuarioRol" name="roles" required>
+                                                        <option value="cliente" selected>cliente</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                             </div>
+
                     <!-- Modal Agregar Categoría -->
                         <div class="modal fade" id="addCategoriaModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog">
@@ -718,8 +772,8 @@
                                             <div class="mb-3">
                                                 <label for="categoriaEstado" class="form-label">Estado</label>
                                                 <select class="form-select" id="categoriaEstado" name="estado" required>
-                                                    <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
+                                                    <option value="1">activa</option>
+                                                    <option value="0">desactivada</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -754,8 +808,8 @@
                                             <div class="mb-3">
                                                 <label for="editCategoriaEstado" class="form-label">Estado</label>
                                                 <select class="form-select" id="editCategoriaEstado" name="estado" required>
-                                                    <option value="1">Activo</option>
-                                                    <option value="0">Inactivo</option>
+                                                    <option value="1">activa</option>
+                                                    <option value="0">desactivada</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -844,9 +898,70 @@
                         break;
                 }
             });
-
             
-             
+
+
+
+
+            // Manejar clic en botones de edición en las tablas
+            $(document).on('click', '.btn-edit', function() {
+                const currentSection = $('.menu-item.active').data('target');
+                const row = $(this).closest('tr');
+            
+                switch(currentSection) {
+                    case 'promociones':
+                    // Llenar modal de edición de promoción con datos de la fila
+                    $('#editPromoId').val(row.find('td:eq(0)').text());
+                    $('#editPromoNombre').val(row.find('td:eq(1)').text());
+                    $('#editPromoDescripcion').val(row.find('td:eq(2)').text());
+                    $('#editPromoPrecio').val(row.find('td:eq(3)').text().trim());
+                    $('#currentPromoImage').attr('src', row.find('td:eq(4) img').attr('src'));
+                    $('#editPromocionModal').modal('show');
+                    break;
+                    
+                    case 'rollos':
+                    // Llenar modal de edición de rollo con datos de la fila
+                    $('#editRolloId').val(row.find('td:eq(0)').text());
+                    $('#editRolloNombre').val(row.find('td:eq(1)').text());
+                    $('#editRolloDescripcion').val(row.find('td:eq(2)').text());
+                    $('#editRolloIngredientes').val(row.find('td:eq(3)').text());
+                    $('#editRolloCantidad').val(row.find('td:eq(4)').text().trim());
+                    $('#editRolloCalificacion').val(row.find('td:eq(5)').text().trim());
+                    $('#editRolloPrecio').val(row.find('td:eq(6)').text().trim());
+                    const rolloCategoria = row.find('td:eq(7)').text().trim().toLowerCase();
+                    $('#editRolloCategoria').val(rolloCategoria);
+                    $('#currentRolloImage').attr('src', row.find('td:eq(8) img').attr('src'));
+                    $('#editRolloModal').modal('show');
+                    break;
+                    
+                    case 'usuarios':
+                    // Llenar modal de edición de usuario con datos de la fila
+                    $('#updateUsuarioId').val(row.find('td:eq(0)').text());
+                    $('#updateUsuarioCedula').val(row.find('td:eq(1)').text());
+                    $('#updateUsuarioNombre').val(row.find('td:eq(2)').text());
+                    $('#updateUsuarioCorreo').val(row.find('td:eq(3)').text());
+                    $('#updateUsuarioContrasena').val(row.find('td:eq(4)').text());
+                    $('#updateUsuarioNumero').val(row.find('td:eq(5)').text());
+                    const estadoTextUsuario = row.find('td').eq(6).text().trim(); 
+                    const estadoValueUsuario = estadoTextUsuario === 'activo' ? '1' : '0'; 
+                    $('#updateUsuarioEstado').val(estadoValueUsuario);
+                     const rolText = row.find('td:eq(7)').text().trim().toLowerCase();
+                    $('#updateUsuarioRol').val(rolText);
+                    $('#updateUsuarioModal').modal('show');
+                    break;
+                    
+                    case 'categorias':
+                    // Llenar modal de edición de categoría con datos de la fila
+                    $('#editCategoriaId').val(row.find('td:eq(0)').text());
+                    $('#editCategoriaNombre').val(row.find('td:eq(1)').text());
+                    $('#editCategoriaDescripcion').val(row.find('td:eq(2)').text());
+                    const estadoText = row.find('td').eq(3).text().trim(); 
+                    const estadoValue = estadoText === 'activa' ? '1' : '0'; 
+                    $('#editCategoriaEstado').val(estadoValue); 
+                    $('#editCategoriaModal').modal('show');
+                    break;
+                }
+            });
         });
     </script>
 

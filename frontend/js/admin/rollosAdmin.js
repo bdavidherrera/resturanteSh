@@ -1,4 +1,4 @@
-import { obtainRollos, RegistrarRollosA} from "../../apiConnection/consumeApi.js";
+import { obtainRollos, RegistrarRollosA , obtainCategorias} from "../../apiConnection/consumeApi.js";
 
 
  
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const registrarRollosAdmins= document.querySelector('#addRolloForm')
     if(tablaRollos){
         getRollos(),
+        getCategoriasRollos(),
         mostrarTotalRollos();
     }
     if(registrarRollosAdmins){
@@ -87,7 +88,7 @@ async function mostrarTotalRollos() {
 }
 
 async function registrarRollosAdmin(formAgregarRollos) {
-
+    const obtainCategoriasRollos = await obtainCategorias();
     formAgregarRollos.addEventListener("submit", async (e) => {
         e.preventDefault(); 
         const inputImagen = document.getElementById("rolloImagen");
@@ -126,3 +127,37 @@ async function registrarRollosAdmin(formAgregarRollos) {
 }
 
 
+async function getCategoriasRollos() {
+    try {
+        const categoriasObtained = await obtainCategorias();
+        
+        // Obtener ambos selects
+        const selectIngresar = document.querySelector('#rolloCategoria');
+        const selectEditar = document.querySelector('#editRolloCategoria');
+        
+        // Limpiar selects
+        selectIngresar.innerHTML = '<option value="">Seleccionar categoría</option>';
+        selectEditar.innerHTML = '<option value="">Seleccionar categoría</option>';
+        
+        // Poblar los selects con las categorías obtenidas
+        categoriasObtained.forEach((categoria) => {
+            const { idcategoria, nombre } = categoria;
+            
+            // Crear opción para select de ingreso
+            const optionIngresar = document.createElement('option');
+            optionIngresar.value = idcategoria;
+            optionIngresar.textContent = `${idcategoria} - ${nombre}`;
+            selectIngresar.appendChild(optionIngresar);
+            
+            // Crear opción para select de edición
+            const optionEditar = document.createElement('option');
+            optionEditar.value = idcategoria;
+            optionEditar.textContent = `${idcategoria} - ${nombre}`;
+            selectEditar.appendChild(optionEditar);
+        });
+        
+    } catch (error) {
+        console.error("Error al cargar categorías:", error);
+        alert("No se pudieron cargar las categorías");
+    }
+}

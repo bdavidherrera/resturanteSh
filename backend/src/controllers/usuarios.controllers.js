@@ -45,7 +45,7 @@ const getUsuriosAdmin= async (req, res)=>{
     try {
         const connection = await getConnection();
         console.log("Conexión obtenida [GET /UsuariosAdmin]");
-        const result= await connection.query("SELECT * FROM usuarios WHERE roles= 'cliente'")
+        const result= await connection.query("SELECT * FROM usuarios WHERE roles= 'cliente' AND estado = 1")
         res.json(result) 
         
     } catch (error) {

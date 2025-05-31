@@ -20,7 +20,7 @@ container.innerHTML = "";
 
 usuariosObtained.forEach((usuarios)=>{
 
-const{idusuarios, cedula, nombre_completo, correo, numero, roles} = usuarios
+const{idusuarios, cedula, nombre_completo, correo, contraseña, numero, estado, roles} = usuarios
 
 const row = document.createElement('tr')
 row.innerHTML=`
@@ -37,12 +37,21 @@ ${nombre_completo}
 ${correo}
 </td>
 <td>
+${contraseña}
+</td>
+<td>
 ${numero}
+</td>
+<td>
+${estadoUsuario(estado)}
 </td>
 <td>
 ${roles}
 </td>
 <td>
+<button class="btn btn-sm btn-edit">
+<i class="fas fa-edit"></i>
+</button>
 <button class="btn btn-sm btn-delete">
 <i class="fas fa-trash"></i>
 </button>
@@ -50,6 +59,14 @@ ${roles}
 `;
 container.appendChild(row);
 })
+}
+
+function estadoUsuario(estado) {
+    if (estado == 1) {
+        return "activo";
+    } else if(estado == 0){
+        return "inactivo";
+    }
 }
 
 async function mostrarTotalUsuarios() {
