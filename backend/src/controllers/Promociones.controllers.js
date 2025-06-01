@@ -34,8 +34,36 @@ const postPromociones = async (req, res) => {
     }
 };
 
+const upatePromociones = async (req, res) => {
+    try {
+        const { idPromociones, nombre, descripcion, imagen, precio } = req.body;
+
+        const Promociones = {
+            nombre,
+            descripcion,
+            imagen,
+            precio
+        };
+
+        const connection = await getConnection();
+        console.log("Conexión obtenida [PUT /Promociones/:id]");
+        
+        const result = await connection.query(
+            "UPDATE Promociones SET ? WHERE idPromociones = ?",
+            [Promociones, idPromociones]
+        );
+
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al actualizar la promoción" });
+    }
+};
+
+
 
 export const methodHTPP = {
     getPromociones,
-    postPromociones
+    postPromociones,
+    upatePromociones
 }

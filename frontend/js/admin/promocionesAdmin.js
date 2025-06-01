@@ -1,14 +1,18 @@
-import { obtainPromociones, registrarPromociones} from "../../apiConnection/consumeApi.js";
+import { obtainPromociones, registrarPromociones , actualizarPromociones} from "../../apiConnection/consumeApi.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaPromociones = document.querySelector('#promociones-tbody')
     const formAgregarUsuariof = document.getElementById("addPromocionForm");
+    const formEditarPromocion = document.getElementById("editPromocionForm");
     if(tablaPromociones){
         getPromociones(),
         mostrarTotalPromociones();
     }
     if(formAgregarUsuariof){
         registrarPromocionesAdmin();
+    }
+    if(formEditarPromocion){
+        editarPromocionesAdmin();
     }
 })
 
@@ -106,3 +110,45 @@ async function registrarPromocionesAdmin() {
         }
     });
 }
+
+
+async function editarPromocionesAdmin() {
+    const formEditarPromocion = document.getElementById("editPromocionForm");
+
+    formEditarPromocion.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Evita que recargue la página
+
+        const imagenInput = document.getElementById("editPromoImagen");
+        const imagenActual = document.getElementById("editPromoImagenActual").value;
+        const imagen = imagenInput.files[0]?.name || imagenActual;
+
+        const datosPromocion = {
+            idPromociones: document.getElementById("editPromoId").value,
+            nombre: document.getElementById("editPromoNombre").value,
+            descripcion: document.getElementById("editPromoDescripcion").value,
+            precio: document.getElementById("editPromoPrecio").value,
+            imagen // solo se envía el nombre, no el archivo
+        };
+
+        try {
+            const resultado = await actualizarPromociones(datosPromocion); 
+            if (resultado) {
+                alert("Promoción actualizada con éxito.");
+                formEditarPromocion.reset();
+
+                const modalElement = document.getElementById("editPromocionModal");
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) modal.hide();
+
+                getPromociones(); 
+            } else {
+                alert("No se pudo actualizar la promoción.");
+            }
+        } catch (error) {
+            console.error("Error al actualizar promoción:", error);
+            alert("Ocurrió un error al intentar actualizar la promoción.");
+        }
+    });
+}
+
+

@@ -7,6 +7,7 @@ const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdm
 //promociones de la API
 const urlP = "http://localhost:8000/api/Promociones"
 const urlRegistrarPromocion = "http://localhost:8000/api/promociones/Registrar"
+const urlActualizarPromocion = "http://localhost:8000/api/promociones/Actualizar"
 //Calificaciones de la API
 const urlCal = "http://localhost:8000/api/calificaciones"
 const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
@@ -104,8 +105,21 @@ export const registrarPromociones = async (datosPromocion) => {
     }
 }
 
-
-
+export const actualizarPromociones = async (datosPromocion) => {
+    try {
+        const response = await fetch(`${urlActualizarPromocion}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosPromocion)
+        });
+        const resultado = await response.json();
+        return resultado;
+    } catch (error) {
+        console.error("Error al actualizar Promocion:", error);
+    }
+}
 
 export const obtainCalificaciones = async ()=>{
     try {

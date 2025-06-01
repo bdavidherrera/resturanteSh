@@ -10,4 +10,6 @@ router.get("/", PromocionesController.getPromociones);
 
 router.post("/Registrar", PromocionesController.postPromociones);
 
+router.put("/Actualizar", PromocionesController.upatePromociones);
+
 export default router;
