@@ -5,6 +5,7 @@ const urlActualizarRollos = "http://localhost:8000/api/rollos/ActualizarRollos"
 //Categorias de la API
 const urlC = "http://localhost:8000/api/categorias"
 const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
+
 //promociones de la API
 const urlP = "http://localhost:8000/api/Promociones"
 const urlRegistrarPromocion = "http://localhost:8000/api/promociones/Registrar"
@@ -17,6 +18,7 @@ const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
 const urlRegistarUsu = "http://localhost:8000/Registrar";
 const urlLoginUsu = "http://localhost:8000/Login";
 const urlUsuarios = "http://localhost:8000/api/usuarios/admin"
+const urlActualizarUsuarios = "http://localhost:8000/api/usuarios/Actualizar";
 
 export const obtainRollos = async ()=>{
     try {
@@ -208,6 +210,22 @@ export const obtainUsuarios = async ()=>{
         console.error("error al obtener los usuarios");
     }
 }
+
+export const actualizarUsuarios = async (datosUsuarios) => {
+    try {
+        const response = await fetch(`${urlActualizarUsuarios}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosUsuarios)
+        });
+        const resultado = await response.json();
+        return resultado;                                   
+    } catch (error) {
+        console.error("Error al actualizar usuarios:", error);
+    }
+}   
 
 
 

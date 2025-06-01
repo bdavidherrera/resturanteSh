@@ -8,6 +8,7 @@ router.post("/", usuariosController.postUsuarios);
 
 router.get("/admin", usuariosController.getUsuriosAdmin);
 
+router.put("/Actualizar", usuariosController.putUsuarios);
 
 
 

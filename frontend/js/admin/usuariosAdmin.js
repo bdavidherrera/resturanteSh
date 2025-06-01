@@ -1,8 +1,9 @@
-import {obtainUsuarios, registrarUsuario}  from "../../apiConnection/consumeApi.js"
+import {obtainUsuarios, registrarUsuario, actualizarUsuarios}  from "../../apiConnection/consumeApi.js"
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaUsuarios = document.querySelector('#usuarios-tbody')
     const formAgregarUsuariof = document.getElementById("addUsuarioForm");
+    const formeditarUsuariof = document.getElementById("updateUsuarioForm");
     if(tablaUsuarios){
         getUsuarios(),
         mostrarTotalUsuarios();
@@ -10,6 +11,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     if(formAgregarUsuariof){
         registrarUsuarioAdmin();
+    }
+    if(formeditarUsuariof){
+        editarUsuarioAdmin();
     }
 })
 
@@ -118,6 +122,44 @@ async function registrarUsuarioAdmin() {
             console.error("Error al registrar el usuario:", error);
             alert("Hubo un error al registrar el usuario. Revisa tus datos.");
             
+        }
+    });
+}
+
+async function editarUsuarioAdmin() {
+    const formEditarUsuariof = document.getElementById("updateUsuarioForm"); 
+    
+    formEditarUsuariof.addEventListener("submit", async (e) => {
+        e.preventDefault(); 
+        
+        const datosUsuario = {
+            idusuarios: document.getElementById("updateUsuarioId").value, 
+            cedula: document.getElementById("updateUsuarioCedula").value, 
+            nombre_completo: document.getElementById("updateUsuarioNombre").value, 
+            correo: document.getElementById("updateUsuarioCorreo").value, 
+            contraseña: document.getElementById("updateUsuarioContrasena").value, 
+            numero: document.getElementById("updateUsuarioNumero").value, 
+            estado: document.getElementById("updateUsuarioEstado").value, 
+            roles: document.getElementById("updateUsuarioRol").value 
+        };
+        
+        try {
+            const resultado = await actualizarUsuarios(datosUsuario);
+            if (resultado.affectedRows > 0) {
+                alert("Usuario actualizado con éxito.");
+                formEditarUsuariof.reset();
+                const modalElement = document.getElementById('updateUsuarioModal'); 
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) modal.hide();
+                getUsuarios();
+                mostrarTotalUsuarios();
+            } else {
+                alert("El usuario no se pudo actualizar. Datos duplicados.");
+                console.log("El resultado no fue válido:", resultado);
+            }
+        } catch (error) {
+            console.error("Error al actualizar el usuario:", error);
+            alert("Hubo un error al actualizar el usuario. Revisa tus datos.");
         }
     });
 }

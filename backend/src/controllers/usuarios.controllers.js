@@ -55,9 +55,34 @@ const getUsuriosAdmin= async (req, res)=>{
     
 }
 
+const putUsuarios = async (req, res) => {
+    try {
+        const { idusuarios, cedula, nombre_completo, correo, contraseña, numero, estado, roles } = req.body;
+
+        const usuario = {
+            cedula, 
+            nombre_completo, 
+            correo, 
+            contraseña, 
+            numero, 
+            estado, 
+            roles
+        };
+        const connection =  await getConnection();
+        console.log("Conexión obtenida [PUT /Usuarios]");
+        const result = await connection.query("UPDATE usuarios SET ? WHERE idusuarios = ?", [usuario, idusuarios]);
+        res.json(result);
+
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al actualizar el usuario" });
+    }
+};
+
 
 export const methodHTPP = {
     postUsuarios, 
     getLoginUser,
-    getUsuriosAdmin
+    getUsuriosAdmin,
+    putUsuarios
 }

@@ -587,7 +587,7 @@
                                     <h5 class="modal-title">Editar Rollo</h5>
                                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="editRolloForm" action="php/update_rollo.php" method="POST" enctype="multipart/form-data">
+                                <form id="editRolloForm" action="api/rollos/ActualizarRollos" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" id="editRolloId" name="id">
                                     <div class="modal-body">
                                         <div class="row">
@@ -707,7 +707,7 @@
                                             <h5 class="modal-title">Actualizar Usuario</h5>
                                             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form id="updateUsuarioForm" action="Actualizar" method="POST">
+                                        <form id="updateUsuarioForm" action="" method="POST">
                                             <input type="hidden" id="updateUsuarioId" name="id">
                                             <div class="modal-body">
                                                 <div class="mb-3">
@@ -723,7 +723,7 @@
                                                     <input type="email" class="form-control" id="updateUsuarioCorreo" name="correo" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="updateUsuarioContrasena" class="form-label">Contraseña (dejar en blanco para no cambiar)</label>
+                                                    <label for="updateUsuarioContrasena" class="form-label">Contraseña</label>
                                                     <input type="password" class="form-control" id="updateUsuarioContrasena" name="contrasena">
                                                 </div>
                                                 <div class="mb-3">
