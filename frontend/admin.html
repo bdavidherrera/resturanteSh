@@ -632,6 +632,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Imagen Actual</label>
                                                     <img id="currentRolloImage" src="" class="img-thumbnail" style="max-height: 100px;">
+                                                    <input type="hidden" id="editRolloImagenActual" name="imagen_actual">
                                                 </div>
                                             </div>
                                         </div>
@@ -934,7 +935,14 @@
                     $('#editRolloPrecio').val(row.find('td:eq(6)').text().trim());
                     const rolloCategoria = row.find('td:eq(7)').text().trim().toLowerCase();
                     $('#editRolloCategoria').val(rolloCategoria);
-                    $('#currentRolloImage').attr('src', row.find('td:eq(8) img').attr('src'));
+                    const srcImagen = row.find('td:eq(8) img').attr('src');  
+                    $('#currentRolloImage').attr('src', srcImagen);
+
+                    const nombreImagen = srcImagen.split('/').pop(); 
+                    $('#editRolloImagenActual').val(nombreImagen);
+
+
+
                     $('#editRolloModal').modal('show');
                     break;
                     

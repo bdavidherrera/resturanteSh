@@ -25,10 +25,10 @@ app.use(cors());
 
 app.use("/api/categorias",categoriasRoutes) //Mostrar categorias y ingresarlas(desde admin)
 
-app.use("/api/rollos", rollosRoutes) //Mostrar, registrar rollos
+app.use("/api/rollos", rollosRoutes) //Mostrar, registrar rollos, actualizar y eliminar rollos (desde admin)
 
 
-app.use("/api/Promociones", promocionesRoutes)//Mostrar promociones de los rollos en Admin y clientes y ingresarlos
+app.use("/api/Promociones", promocionesRoutes)//Mostrar promociones de los rollos en Admin, clientes, ingresarlos, actualizarlos y eliminarlos
 
 app.use("/api/calificaciones", calificacionesRoutes) //Mostrar calificaciones de los rollos en Admin y clientes
 

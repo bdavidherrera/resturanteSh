@@ -1,6 +1,7 @@
 //Rollos de la API
 const url = "http://localhost:8000/api/rollos"
 const urlRollos = "http://localhost:8000/api/rollos/RegistrarRollos"
+const urlActualizarRollos = "http://localhost:8000/api/rollos/ActualizarRollos"
 //Categorias de la API
 const urlC = "http://localhost:8000/api/categorias"
 const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
@@ -44,6 +45,22 @@ export const RegistrarRollosA = async (datosRollos) => {
         
     } catch (error) {
         console.error("Error al registrar rollos:", error);
+    }
+}
+
+export const actualizarRollos = async (datosRollos) => {
+    try {
+        const response = await fetch(`${urlActualizarRollos}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosRollos)
+        });
+        const resultado = await response.json();
+        return resultado;                                   
+    } catch (error) {
+        console.error("Error al actualizar rollos:", error);
     }
 }
 

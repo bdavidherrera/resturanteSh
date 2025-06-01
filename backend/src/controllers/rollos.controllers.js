@@ -31,11 +31,33 @@ const postRollos = async (req, res)=>{
     }
 }
 
+const putRollos = async (req, res)=> {
+    try {
+        const { idrollos, nombre, descripccion, ingredientes, cantidad, calificacion, precio, id_categoria, imagen } = req.body;
+
+        const rollos = {
+            nombre, descripccion, ingredientes, cantidad, calificacion, precio, id_categoria, imagen
+        };
+
+        const connection = await getConnection();
+        console.log("Conexión obtenida [PUT /rollos/:id]");
+        const result = await connection.query("UPDATE rollos SET ? WHERE idrollos = ?", [rollos, idrollos]);
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "error al actualizar el rollo", error: error.message });
+    }
+}
+
+
+
+
 
 
 
 
 export const methodHTPP = {
     getRollos,
-    postRollos
+    postRollos,
+    putRollos
 }

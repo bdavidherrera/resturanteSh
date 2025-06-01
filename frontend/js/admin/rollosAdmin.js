@@ -1,4 +1,4 @@
-import { obtainRollos, RegistrarRollosA , obtainCategorias} from "../../apiConnection/consumeApi.js";
+import { obtainRollos, RegistrarRollosA , obtainCategorias, actualizarRollos} from "../../apiConnection/consumeApi.js";
 
 
  
@@ -6,6 +6,7 @@ import { obtainRollos, RegistrarRollosA , obtainCategorias} from "../../apiConne
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaRollos = document.querySelector('#Rollos-tbody')
     const registrarRollosAdmins= document.querySelector('#addRolloForm')
+    const formActualizarRollos = document.querySelector('#editRolloForm');
     if(tablaRollos){
         getRollos(),
         getCategoriasRollos(),
@@ -13,6 +14,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     if(registrarRollosAdmins){
         registrarRollosAdmin(registrarRollosAdmins);
+    }
+    if(formActualizarRollos){
+        actualizarRollosAdmin(formActualizarRollos);
     }
 })
 
@@ -161,3 +165,44 @@ async function getCategoriasRollos() {
         alert("No se pudieron cargar las categorías");
     }
 }
+
+async function actualizarRollosAdmin(formActualizarRollos) {
+    formActualizarRollos.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const inputImagen = document.getElementById("editRolloImagen");
+        const imagenActual = document.getElementById("editRolloImagenActual").value;
+
+        const fileName = inputImagen.files.length > 0 ? inputImagen.files[0].name : imagenActual;
+
+        const datosRollos = {
+            idrollos: document.getElementById("editRolloId").value,
+            nombre: document.getElementById("editRolloNombre").value,
+            descripccion: document.getElementById("editRolloDescripcion").value,
+            ingredientes: document.getElementById("editRolloIngredientes").value,
+            cantidad: document.getElementById("editRolloCantidad").value,
+            calificacion: document.getElementById("editRolloCalificacion").value,
+            precio: document.getElementById("editRolloPrecio").value,
+            id_categoria: document.getElementById("editRolloCategoria").value,
+            imagen: fileName
+        };
+
+        try {
+            const resultado = await actualizarRollos(datosRollos);
+            if (resultado) {
+                alert("Rollos actualizado con éxito.");
+                formActualizarRollos.reset();
+                const modalElement = document.getElementById('editRolloModal');
+                const modal = bootstrap.Modal.getInstance(modalElement);
+                if (modal) modal.hide();
+                getRollos();
+                mostrarTotalRollos();
+            } else {
+                console.log("El resultado no fue válido:", resultado);
+            }
+        } catch (error) {
+            console.error("Error en la actualización:", error);
+            alert("Hubo un error al actualizar el rollo.");
+        }
+    });
+}   

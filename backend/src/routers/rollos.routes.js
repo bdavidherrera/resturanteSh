@@ -8,5 +8,6 @@ const router = Router();
 /*Configuramos respuesta desde server metodo http get */
 router.get("/", rollosController.getRollos);
 router.post("/RegistrarRollos", rollosController.postRollos);
+router.put("/ActualizarRollos", rollosController.putRollos);
 
 export default router;
