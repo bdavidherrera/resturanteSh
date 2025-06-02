@@ -66,7 +66,7 @@ ${id_categoria}
 </td>
 
 <td>
-<button class="btn btn-sm btn-edit">
+<button class="btn btn-sm btn-edit" id="eliminar-rollo">
 <i class="fas fa-edit"></i>
 </button>
 <button class="btn btn-sm btn-delete">

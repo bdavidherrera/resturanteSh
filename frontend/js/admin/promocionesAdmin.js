@@ -50,7 +50,7 @@ ${precio}
 <button class="btn btn-sm btn-edit">
 <i class="fas fa-edit"></i>
 </button>
-<button class="btn btn-sm btn-delete">
+<button class="btn btn-sm btn-delete" id="eliminar-promocion">
 <i class="fas fa-trash"></i>
 </button>
 </td>
