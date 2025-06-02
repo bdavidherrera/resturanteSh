@@ -10,6 +10,8 @@ router.get("/admin", usuariosController.getUsuriosAdmin);
 
 router.put("/Actualizar", usuariosController.putUsuarios);
 
+router.put("/EliminarUsuario/:idusuarios", usuariosController.deleteUsuarios);
+
 
 
 export default router;

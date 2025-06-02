@@ -79,10 +79,24 @@ const putUsuarios = async (req, res) => {
     }
 };
 
+const deleteUsuarios = async (req, res) => {
+    try {
+        const { idusuarios } = req.params;
+
+        const connection = await getConnection();
+        console.log("Conexión obtenida [DELETE-UPDATE /Usuarios/:id]");
+        const result = await connection.query("UPDATE usuarios SET estado = 0 WHERE  idusuarios = ?", [idusuarios]);
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al eliminar el usuario" });
+    }
+};
 
 export const methodHTPP = {
     postUsuarios, 
     getLoginUser,
     getUsuriosAdmin,
-    putUsuarios
+    putUsuarios,
+    deleteUsuarios
 }
