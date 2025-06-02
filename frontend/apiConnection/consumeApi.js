@@ -8,12 +8,14 @@ const urlEliminarRollos = "http://localhost:8000/api/rollos/EliminarRollos/:idro
 const urlC = "http://localhost:8000/api/categorias"
 const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
 const urlActualizarCategoria = "http://localhost:8000/api/categorias/ActualizarCategoria"
+const urlEliminarCategoria = "http://localhost:8000/api/categorias/EliminarCategoria/:idcategoria"
 
 //promociones de la API
 const urlP = "http://localhost:8000/api/Promociones"
 const urlRegistrarPromocion = "http://localhost:8000/api/promociones/Registrar"
 const urlActualizarPromocion = "http://localhost:8000/api/promociones/Actualizar"
 const urlEliminarPromocion = "http://localhost:8000/api/Promociones/EliminarPromociones/:idPromociones"
+
 //Calificaciones de la API
 const urlCal = "http://localhost:8000/api/calificaciones"
 const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
@@ -128,6 +130,22 @@ export const actualizarCategoriasAdmin = async (datosCategorias) => {
         return resultado;
     } catch (error) {
         console.error("Error al actualizar Categorias:", error);
+    }
+}
+
+
+export const eliminarCategoriasAdmin = async (idCategoria) => {
+    try {
+        const response = await fetch(`${urlEliminarCategoria.replace(':idcategoria', idCategoria)}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const resultado = await response.json();
+        return resultado;
+    } catch (error) {           
+        console.error("Error al eliminar la categoria:", error);
     }
 }
 

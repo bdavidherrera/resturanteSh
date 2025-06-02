@@ -57,11 +57,26 @@ const putCategoriasAdmin = async (req, res) => {
 };
 
 
+const deleteCategoriasAdmin = async (req, res) => {
+    try {
+        const { idcategoria } = req.params;
 
+        const connection =  await getConnection();
+        console.log("Conexión obtenida [UPDATE /categorias/:idcategoria]");
+        const result = await connection.query("UPDATE categorias SET estado=0 WHERE idcategoria = ?", [idcategoria]);
+        res.json(result);
+
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al eliminar la categoria" , error: error.message });
+
+    }
+}
 
 
 export const methodHTPP = {
     getCategorias,
     postCategoriasAdmin,
-    putCategoriasAdmin
+    putCategoriasAdmin, 
+    deleteCategoriasAdmin
 }

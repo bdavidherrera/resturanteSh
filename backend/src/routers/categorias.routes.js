@@ -12,4 +12,6 @@ router.post("/RegistrarAdmin", categoriaController.postCategoriasAdmin);
 
 router.put("/ActualizarCategoria", categoriaController.putCategoriasAdmin);
 
+router.put("/EliminarCategoria/:idcategoria", categoriaController.deleteCategoriasAdmin);
+
 export default router;

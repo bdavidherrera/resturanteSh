@@ -1,4 +1,4 @@
-import { obtainCategorias, registrarCategoriasAdmin, actualizarCategoriasAdmin } from "../../apiConnection/consumeApi.js";
+import { obtainCategorias, registrarCategoriasAdmin, actualizarCategoriasAdmin, eliminarCategoriasAdmin } from "../../apiConnection/consumeApi.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaCategorias = document.querySelector('#categorias-tbody')
@@ -127,6 +127,27 @@ async function actualizarCategorias() {
     });
 }
 
+document.addEventListener("click", async (e) => {   
+    if (e.target.closest("#eliminar-categoria")) {
+        const row = e.target.closest("tr");
+        const idCategoria = row.querySelector("td").textContent.trim();
 
+        if (confirm("¿Estás seguro de que deseas eliminar esta categoria?")) {
+            try {
+                const resultado = await eliminarCategoriasAdmin(idCategoria);
+                if (resultado.affectedRows > 0) {
+                    alert("Categoria eliminada con éxito.");
+                    getCategorias();
+                } else {
+                    alert("La categoria no se pudo eliminar.", resultado);
+                }
+            } catch (error) {
+                console.error("Error al eliminar la categoria:", error);
+                alert("Hubo un error al eliminar la categoria.");
+            }
+        }
+    }
+}
+);
 
 
