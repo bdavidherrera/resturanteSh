@@ -1,4 +1,4 @@
-import {obtainUsuarios, registrarUsuario, actualizarUsuarios}  from "../../apiConnection/consumeApi.js"
+import {obtainUsuarios, registrarUsuario, actualizarUsuarios, eliminarUsuarios}  from "../../apiConnection/consumeApi.js"
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaUsuarios = document.querySelector('#usuarios-tbody')
@@ -163,3 +163,27 @@ async function editarUsuarioAdmin() {
         }
     });
 }
+
+
+document.addEventListener("click", async (e) => {
+    if (e.target.closest("#eliminar-usuario")) {
+        const row = e.target.closest("tr");
+        const idusuarios = row.querySelector("td").textContent.trim();
+
+        if (confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+            try {
+                const resultado = await eliminarUsuarios(idusuarios);
+                if (resultado.affectedRows > 0) {
+                    alert("Usuario eliminado con éxito.");
+                    getUsuarios();
+                    mostrarTotalUsuarios();
+                } else {
+                    alert("El usuario no se pudo eliminar.");
+                }
+            } catch (error) {
+                console.error("Error al eliminar el usuario:", error);
+                alert("Hubo un error al eliminar el usuario.");
+            }
+        }
+    }
+});

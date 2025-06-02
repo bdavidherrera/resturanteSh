@@ -24,6 +24,7 @@ const urlRegistarUsu = "http://localhost:8000/Registrar";
 const urlLoginUsu = "http://localhost:8000/Login";
 const urlUsuarios = "http://localhost:8000/api/usuarios/admin"
 const urlActualizarUsuarios = "http://localhost:8000/api/usuarios/Actualizar";
+const  urlEliminarUsuarios = "http://localhost:8000/api/usuarios/EliminarUsuario/:idusuarios";
 
 export const obtainRollos = async ()=>{
     try {
@@ -296,7 +297,22 @@ export const actualizarUsuarios = async (datosUsuarios) => {
     } catch (error) {
         console.error("Error al actualizar usuarios:", error);
     }
-}   
+} 
+
+export const eliminarUsuarios = async (idusuarios) => {
+    try {
+        const response = await fetch(`${urlEliminarUsuarios.replace(':idusuarios', idusuarios)}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            }   
+        });
+        const resultado = await response.json();
+        return resultado;
+    } catch (error) {
+        console.error("Error al eliminar el usuario:", error);
+    }
+}
 
 
 
