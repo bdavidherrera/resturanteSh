@@ -294,6 +294,19 @@
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            const role = sessionStorage.getItem("rol");
+            
+            if (role !== null) {
+                alert("Acceso denegado. Redirigiendo al login.");
+                window.location.href = "login.html";
+                sessionStorage.clear();
+            }});
+    </script>
+
+
+
 </body>
 
 </html>
