@@ -39,7 +39,7 @@ ${NombreR}
 ${Cliente}
 </td>
 <td>
-<button class="btn btn-sm btn-delete">
+<button class="btn btn-sm btn-delete" id="eliminar-calificacion">
 <i class="fas fa-trash"></i>
 </button>
 </td>
@@ -61,7 +61,7 @@ function formatearFecha(fechaString) {
 
 
 document.addEventListener('click', async (e) => {
-    if (e.target.closest('.btn-delete')) {
+    if (e.target.closest('#eliminar-calificacion')) {
         const row = e.target.closest('tr');
         const idcalificacion = row.querySelector('td').textContent.trim();
 
