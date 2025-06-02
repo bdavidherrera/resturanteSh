@@ -10,5 +10,6 @@ router.get("/", categoriaController.getCategorias);
 
 router.post("/RegistrarAdmin", categoriaController.postCategoriasAdmin);
 
+router.put("/ActualizarCategoria", categoriaController.putCategoriasAdmin);
 
 export default router;

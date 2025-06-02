@@ -1,11 +1,12 @@
-import { obtainCalificacionesAdmin } from "../../apiConnection/consumeApi.js";
+import { obtainCalificacionesAdmin, deleteCalificacionAdmin} from "../../apiConnection/consumeApi.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaCalificaciones = document.querySelector('#calificaciones-tbody')
     if(tablaCalificaciones){
         getCalificaciones();
     }
-})
+    }
+)
 
 
 async function getCalificaciones(){
@@ -57,3 +58,22 @@ function formatearFecha(fechaString) {
         minute: '2-digit'
     });
 }
+
+
+document.addEventListener('click', async (e) => {
+    if (e.target.closest('.btn-delete')) {
+        const row = e.target.closest('tr');
+        const idcalificacion = row.querySelector('td').textContent.trim();
+
+        const confirmacion = confirm("¿Estás seguro de eliminar esta calificación?");
+        if (confirmacion) {
+            const resultado = await deleteCalificacionAdmin(idcalificacion);
+            if (resultado?.affectedRows > 0) {
+                alert("Calificación eliminada correctamente");
+                await getCalificaciones();
+            } else {
+                alert("Error al eliminar la calificación");
+            }
+        }
+    }
+});

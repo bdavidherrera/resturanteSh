@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended:true}));
 /*routers */
 app.use(cors()); 
 
-app.use("/api/categorias",categoriasRoutes) //Mostrar categorias y ingresarlas(desde admin)
+app.use("/api/categorias",categoriasRoutes) //Mostrar categorias, registrar categorias, actualizar y eliminar categorias (desde admin)
 
 app.use("/api/rollos", rollosRoutes) //Mostrar, registrar rollos, actualizar y eliminar rollos (desde admin)
 
@@ -38,7 +38,7 @@ app.use("/Registrar", usuariosRoutes); //Registrar Usuarios clientes
 
 app.use("/Login", usuariosLoginRoutes); //Verificar datos del login
 
-app.use("/api/usuarios", usuariosRoutes); //Mostrar Usuarios clientes
+app.use("/api/usuarios", usuariosRoutes); //Mostrar Usuarios clientes, actualizar y eliminar usuarios (desde admin)
 
 
 

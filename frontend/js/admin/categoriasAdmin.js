@@ -1,13 +1,17 @@
-import { obtainCategorias, registrarCategoriasAdmin } from "../../apiConnection/consumeApi.js";
+import { obtainCategorias, registrarCategoriasAdmin, actualizarCategoriasAdmin } from "../../apiConnection/consumeApi.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaCategorias = document.querySelector('#categorias-tbody')
     const insertarCategoria = document.querySelector('#addCategoriaForm')
+    const ActualizarCategoria = document.querySelector('#editCategoriaForm')
     if(tablaCategorias){
         getCategorias();
     }
     if(insertarCategoria){
         registrarCategorias();
+    }
+    if(ActualizarCategoria){
+        actualizarCategorias();
     }
 })
 
@@ -86,6 +90,39 @@ async function registrarCategorias() {
             console.error("Error al registrar la categoria:", error);
             alert("Hubo un error al registrar la categoria. Revisa tus datos.");
             
+        }
+    });
+}
+
+
+async function actualizarCategorias() {
+    const formActualizarCategoria = document.getElementById("editCategoriaForm");
+
+    formActualizarCategoria.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Evita que el formulario se recargue
+
+        const datosCategoria = {
+            idcategoria: document.getElementById("editCategoriaId").value,
+            nombre: document.getElementById("editCategoriaNombre").value,
+            descripcion: document.getElementById("editCategoriaDescripcion").value,
+            estado: document.getElementById("editCategoriaEstado").value
+        };
+
+        try {
+            const resultado = await actualizarCategoriasAdmin(datosCategoria);
+            if (resultado.affectedRows > 0) {
+                alert("Categoria actualizada con éxito.");
+                formActualizarCategoria.reset();
+                const modalElementCategoria = document.getElementById('editCategoriaModal');
+                const modalCategoria = bootstrap.Modal.getInstance(modalElementCategoria);
+                if (modalCategoria) modalCategoria.hide();
+                getCategorias();
+            } else {
+                alert("La categoria no se pudo actualizar.", resultado);
+            }
+        } catch (error) {
+            console.error("Error al actualizar la categoria:", error);
+            alert("Hubo un error al actualizar la categoria. Revisa tus datos.");
         }
     });
 }

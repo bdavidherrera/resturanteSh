@@ -8,6 +8,7 @@ const router = Router();
 /*Configuramos respuesta desde server metodo http get */
 router.get("/", calificacionesController.getCalificaciones);
 router.get("/admin", calificacionesController.getCalificacionesAdmin);
+router.delete("/admindeleteCal/:idcalificacion", calificacionesController.deleteCalificacionAdmin);
 
 
 export default router;

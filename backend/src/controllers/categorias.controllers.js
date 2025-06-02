@@ -35,10 +35,33 @@ const postCategoriasAdmin = async (req, res) => {
     }
 };
 
+const putCategoriasAdmin = async (req, res) => {
+    try {
+        const { idcategoria ,nombre, descripcion, estado } = req.body;
+
+        const categoria = {
+            nombre, 
+            descripcion, 
+            estado 
+        };
+        const connection =  await getConnection();
+        console.log("Conexión obtenida [PUT /categorias/:idcategoria]");
+        const result = await connection.query("UPDATE categorias SET ? WHERE idcategoria = ?", [categoria, idcategoria]);
+        res.json(result);
+
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al actualizar la categoria" , error: error.message });
+
+    }
+};
+
+
 
 
 
 export const methodHTPP = {
     getCategorias,
-    postCategoriasAdmin
+    postCategoriasAdmin,
+    putCategoriasAdmin
 }

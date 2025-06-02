@@ -27,9 +27,23 @@ const getCalificacionesAdmin = async (req, res)=>{
     
 }
 
+const deleteCalificacionAdmin = async (req, res) => {   
+    try {
+        const { idcalificacion } = req.params;
+        const connection = await getConnection();
+        console.log("Conexión obtenida [DELETE /calificacionesAdmin/:idcalificacion]");
+        const result = await connection.query("DELETE FROM calificaciones WHERE idcalificacion = ?", [idcalificacion]);
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al eliminar la calificación", error: error.message });
+    }
+}
+
 export const methodHTPP = {
     getCalificaciones,
-    getCalificacionesAdmin
+    getCalificacionesAdmin,
+    deleteCalificacionAdmin
 }
 
 
