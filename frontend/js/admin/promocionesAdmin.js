@@ -1,4 +1,4 @@
-import { obtainPromociones, registrarPromociones , actualizarPromociones} from "../../apiConnection/consumeApi.js";
+import { obtainPromociones, registrarPromociones , actualizarPromociones , eliminarPromocion} from "../../apiConnection/consumeApi.js";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaPromociones = document.querySelector('#promociones-tbody')
@@ -151,4 +151,21 @@ async function editarPromocionesAdmin() {
     });
 }
 
+document.addEventListener('click', async (e) => {
+    if (e.target.closest('#eliminar-promocion')) {
+        const row = e.target.closest('tr');
+        const idPromociones = row.querySelector('td').textContent.trim();
 
+        const confirmacion = confirm("¿Estás seguro de eliminar esta promoción?");
+        if (confirmacion) {
+            const resultado = await eliminarPromocion(idPromociones);
+            if (resultado?.affectedRows > 0) {
+                alert("Promoción eliminada correctamente");
+                await getPromociones();
+                mostrarTotalPromociones();
+            } else {
+                alert("Error al eliminar la promoción");
+            }
+        }
+    }
+});

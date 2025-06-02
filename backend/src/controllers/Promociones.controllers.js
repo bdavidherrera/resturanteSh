@@ -60,10 +60,22 @@ const upatePromociones = async (req, res) => {
     }
 };
 
-
+const deletePromociones = async (req, res) => {
+    try {
+        const { idPromociones } = req.params;
+        const connection = await getConnection();
+        console.log("Conexión obtenida [DELETE /Promociones/:id]");
+        const result = await connection.query("DELETE FROM Promociones WHERE idPromociones = ?", [idPromociones]);
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "Error al eliminar la promoción", error: error.message });
+    }
+};
 
 export const methodHTPP = {
     getPromociones,
     postPromociones,
-    upatePromociones
+    upatePromociones,
+    deletePromociones
 }

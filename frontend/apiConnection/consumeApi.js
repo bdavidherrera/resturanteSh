@@ -2,6 +2,7 @@
 const url = "http://localhost:8000/api/rollos"
 const urlRollos = "http://localhost:8000/api/rollos/RegistrarRollos"
 const urlActualizarRollos = "http://localhost:8000/api/rollos/ActualizarRollos"
+
 //Categorias de la API
 const urlC = "http://localhost:8000/api/categorias"
 const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
@@ -11,7 +12,7 @@ const urlActualizarCategoria = "http://localhost:8000/api/categorias/ActualizarC
 const urlP = "http://localhost:8000/api/Promociones"
 const urlRegistrarPromocion = "http://localhost:8000/api/promociones/Registrar"
 const urlActualizarPromocion = "http://localhost:8000/api/promociones/Actualizar"
-
+const urlEliminarPromocion = "http://localhost:8000/api/Promociones/EliminarPromociones/:idPromociones"
 //Calificaciones de la API
 const urlCal = "http://localhost:8000/api/calificaciones"
 const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
@@ -157,6 +158,23 @@ export const actualizarPromociones = async (datosPromocion) => {
     } catch (error) {
         console.error("Error al actualizar Promocion:", error);
     }
+}
+
+export const eliminarPromocion = async (idPromociones) => {
+    try {
+        const response = await fetch(`${urlEliminarPromocion.replace(':idPromociones', idPromociones)}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        
+        const resultado = await response.json();
+        return resultado;
+        
+    } catch (error) {
+        console.error("Error al eliminar la promoción:", error);
+    }   
 }
 
 export const obtainCalificaciones = async ()=>{

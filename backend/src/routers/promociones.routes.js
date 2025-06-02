@@ -12,4 +12,6 @@ router.post("/Registrar", PromocionesController.postPromociones);
 
 router.put("/Actualizar", PromocionesController.upatePromociones);
 
+router.delete("/EliminarPromociones/:idPromociones", PromocionesController.deletePromociones);
+
 export default router;
