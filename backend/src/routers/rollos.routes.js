@@ -4,10 +4,10 @@ import { methodHTPP as rollosController} from "../controllers/rollos.controllers
 /*Creamos el enrutador */
 const router = Router();
 
-/*get */
-/*Configuramos respuesta desde server metodo http get */
+
 router.get("/", rollosController.getRollos);
 router.post("/RegistrarRollos", rollosController.postRollos);
 router.put("/ActualizarRollos", rollosController.putRollos);
+router.delete("/EliminarRollos/:idrollos", rollosController.deleterollos);
 
 export default router;

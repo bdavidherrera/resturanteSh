@@ -1,7 +1,5 @@
-import { obtainRollos, RegistrarRollosA , obtainCategorias, actualizarRollos} from "../../apiConnection/consumeApi.js";
+import { obtainRollos, RegistrarRollosA , obtainCategorias, actualizarRollos, eliminarRollos} from "../../apiConnection/consumeApi.js";
 
-
- 
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const tablaRollos = document.querySelector('#Rollos-tbody')
@@ -66,10 +64,10 @@ ${id_categoria}
 </td>
 
 <td>
-<button class="btn btn-sm btn-edit" id="eliminar-rollo">
+<button class="btn btn-sm btn-edit" >
 <i class="fas fa-edit"></i>
 </button>
-<button class="btn btn-sm btn-delete">
+<button class="btn btn-sm btn-delete" id="eliminar-rollo">
 <i class="fas fa-trash"></i>
 </button>
 </td>
@@ -206,3 +204,27 @@ async function actualizarRollosAdmin(formActualizarRollos) {
         }
     });
 }   
+
+
+document.addEventListener("click", async (e) => {
+    if (e.target.closest("#eliminar-rollo")) {
+        const row = e.target.closest("tr");
+        const idrollos = row.querySelector("td").textContent.trim();
+        
+        if (confirm("¿Estás seguro de que deseas eliminar este rollo?")) {
+            try {
+                const resultado = await eliminarRollos(idrollos);
+                if (resultado) {
+                    alert("Rollo eliminado con éxito.");
+                    getRollos();
+                    mostrarTotalRollos();
+                } else {
+                    console.log("El resultado no fue válido:", resultado);
+                }
+            } catch (error) {
+                console.error("Error al eliminar el rollo:", error);
+                alert("Hubo un error al eliminar el rollo.");
+            }
+        }
+    }
+});

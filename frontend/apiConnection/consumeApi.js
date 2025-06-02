@@ -2,6 +2,7 @@
 const url = "http://localhost:8000/api/rollos"
 const urlRollos = "http://localhost:8000/api/rollos/RegistrarRollos"
 const urlActualizarRollos = "http://localhost:8000/api/rollos/ActualizarRollos"
+const urlEliminarRollos = "http://localhost:8000/api/rollos/EliminarRollos/:idrollos"
 
 //Categorias de la API
 const urlC = "http://localhost:8000/api/categorias"
@@ -67,6 +68,21 @@ export const actualizarRollos = async (datosRollos) => {
         return resultado;                                   
     } catch (error) {
         console.error("Error al actualizar rollos:", error);
+    }
+}
+
+export const eliminarRollos = async (idrollos) => {
+    try {
+        const response = await fetch(`${urlEliminarRollos.replace(':idrollos', idrollos)}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }   
+        });
+        const resultado = await response.json();
+        return resultado;
+    } catch (error) {
+        console.error("Error al eliminar el rollo:", error);
     }
 }
 

@@ -49,6 +49,20 @@ const putRollos = async (req, res)=> {
     }
 }
 
+const deleterollos = async (req, res) => {
+    try {
+        const { idrollos } = req.params;
+
+        const connection = await getConnection();
+        console.log("Conexión obtenida [DELETE /rollos/:id]");
+        const result = await connection.query("DELETE FROM rollos WHERE idrollos = ?", [idrollos]);
+        res.json(result);
+    } catch (error) {
+        console.error("ERROR 500:", error);
+        res.status(500).json({ message: "error al eliminar el rollo", error: error.message });
+    }
+}
+
 
 
 
@@ -59,5 +73,6 @@ const putRollos = async (req, res)=> {
 export const methodHTPP = {
     getRollos,
     postRollos,
-    putRollos
+    putRollos,
+    deleterollos
 }
