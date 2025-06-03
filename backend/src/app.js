@@ -16,6 +16,7 @@ const app = express();
 /*setear un puerto ami web server */
 app.set("port",8000);
 
+/* Midelware*/
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -30,7 +31,7 @@ app.use("/api/rollos", rollosRoutes) //Mostrar, registrar rollos, actualizar y e
 
 app.use("/api/Promociones", promocionesRoutes)//Mostrar promociones de los rollos en Admin, clientes, ingresarlos, actualizarlos y eliminarlos
 
-app.use("/api/calificaciones", calificacionesRoutes) //Mostrar calificaciones de los rollos en Admin y clientes
+app.use('/api/calificaciones', calificacionesRoutes);
 
 
 app.use("/Registrar", usuariosRoutes); //Registrar Usuarios clientes

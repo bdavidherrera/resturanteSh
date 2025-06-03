@@ -94,15 +94,15 @@ function actualizarCategoriasFilter(rollos) {
 // Crear una tarjeta de rollo mejorada
 function crearTarjetaRollo(rollo) {
     const { idrollos, nombre, descripccion, ingredientes, cantidad, calificacion, precio, idenc, imagen } = rollo;
-    
+
     // Preparar la imagen
-    const rutaImagen = !imagen || imagen === 'NULL' ? 'img/default_sushi.jpg' : 
-                       imagen.toLowerCase().startsWith('img/') ? imagen : `img/${imagen}`;
-    
+    const rutaImagen = !imagen || imagen === 'NULL' ? 'img/default_sushi.jpg' :
+        imagen.toLowerCase().startsWith('img/') ? imagen : `img/${imagen}`;
+
     // Crear elemento columna con clases Bootstrap correctas
     const colDiv = document.createElement('div');
     colDiv.className = 'col-lg-4 col-md-6 col-sm-12 mb-4';
-    
+
     // Generar lista de ingredientes con iconos
     const ingredientesArray = ingredientes ? ingredientes.split(',').map(ing => ing.trim()) : [];
     const ingredientesHTML = ingredientesArray.slice(0, 3).map(ingrediente => {
@@ -111,10 +111,10 @@ function crearTarjetaRollo(rollo) {
                     <i class="${icono}"></i> ${ingrediente}
                 </span>`;
     }).join('');
-    
-    const masIngredientes = ingredientesArray.length > 3 ? 
+
+    const masIngredientes = ingredientesArray.length > 3 ?
         `<span class="ingrediente-tag more">+${ingredientesArray.length - 3}</span>` : '';
-    
+
     // Construir tarjeta con estructura Bootstrap estándar
     colDiv.innerHTML = `
         <div class="card rollo-card h-100" data-id="${idrollos}" data-categoria="${idenc}" data-precio="${precio}">
@@ -124,17 +124,47 @@ function crearTarjetaRollo(rollo) {
                      alt="${nombre}"
                      style="height: 200px; object-fit: cover;">
                 
-                <div class="card-img-overlay d-flex align-items-end p-0">
-                    <button class="btn btn-primary btn-sm btn-ver-detalle m-2" data-id="${idrollos}">
-                        <i class="fas fa-eye"></i> Ver Detalles
-                    </button>
-                </div>
+                <style>
+    .btn-ver-detalle {
+        background-color: var(--neon-red);
+        color: var(--white);
+        border: none;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: 4px;
+        box-shadow: var(--neon-glow);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-ver-detalle:hover {
+        background-color: var(--dark-red);
+        box-shadow: 0 0 15px var(--neon-red);
+    }
+
+    .card-img-overlay-custom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: end;
+        padding: 0;
+        z-index: 10;
+    }
+
+    .btn-ver-detalle i {
+        margin-right: 4px;
+    }
+</style>
+
+<div class="card-img-overlay-custom">
+    <button class="btn-ver-detalle m-2" data-id="${idrollos}">
+        <i class="fas fa-eye"></i> Calificar
+    </button>
+</div>
+
                 
                 <div class="position-absolute" style="top: 10px; right: 10px;">
-                    <span class="badge ${cantidad > 0 ? 'badge-success' : 'badge-danger'}">
-                        <i class="fas ${cantidad > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i>
-                        ${cantidad > 0 ? `${cantidad} disp.` : 'Agotado'}
-                    </span>
                 </div>
             </div>
             
@@ -172,7 +202,7 @@ function crearTarjetaRollo(rollo) {
             </div>
         </div>
     `;
-    
+
     return colDiv;
 }
 

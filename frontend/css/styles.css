@@ -1670,3 +1670,95 @@ html {
     padding: 2px 5px !important;
 }
 
+
+/* Estilo para el botón de Promociones - Rojo sólido */
+.neon-btn {
+    background: linear-gradient(135deg, #ff3838, #e63946);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 56, 56, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.neon-btn:hover {
+    background: linear-gradient(135deg, #e63946, #dc2626);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 56, 56, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.neon-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(255, 56, 56, 0.3);
+}
+
+/* Estilo para el botón de Iniciar Sesión - Versión outline */
+.neon-btn-secondary {
+    background: transparent;
+    color: #ff3838;
+    border: 2px solid #ff3838;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.neon-btn-secondary:hover {
+    background: #ff3838;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 56, 56, 0.3);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+.neon-btn-secondary:active {
+    transform: translateY(0);
+}
+
+/* Alternativa: Ambos botones con el mismo estilo rojo sólido */
+.btn-custom, .btn-login {
+    background: linear-gradient(135deg, #ff3838, #e63946);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 56, 56, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-custom:hover, .btn-login:hover {
+    background: linear-gradient(135deg, #e63946, #dc2626);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 56, 56, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+/* Para asegurar que el ícono también tenga el color correcto */
+.btn-login i {
+    margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .neon-btn, .neon-btn-secondary, .btn-custom, .btn-login {
+        padding: 10px 16px;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+}

@@ -10,9 +10,29 @@ const getCalificaciones = async (req, res)=>{
     console.error("ERROR 500:", error);
     res.status(500).json({ message: "Error al obtener calificaciones", error: error.message });
 }
-
-    
 }
+
+const postCalificaciones = async (req, res) => {
+  try {
+    const { comentario, fecha, fk_id_cliente, fk_id_rollo, puntuacion } = req.body;
+
+    const calificacion = {
+      comentario,
+      fk_id_cliente,
+      fk_id_rollo,
+      puntuacion,
+    };
+
+    const connection = await getConnection();
+    console.log("Conexión obtenida [POST /calificaciones]");
+    const result = await connection.query("INSERT INTO calificaciones SET ?", calificacion);
+    res.json(result);
+  } catch (error) {
+    console.error("ERROR 500:", error);
+    res.status(500).json({ message: "Error al crear calificación", error: error.message });
+  }
+};
+
 
 const getCalificacionesAdmin = async (req, res)=>{
     try {
@@ -43,7 +63,8 @@ const deleteCalificacionAdmin = async (req, res) => {
 export const methodHTPP = {
     getCalificaciones,
     getCalificacionesAdmin,
-    deleteCalificacionAdmin
+    deleteCalificacionAdmin,
+    postCalificaciones
 }
 
 

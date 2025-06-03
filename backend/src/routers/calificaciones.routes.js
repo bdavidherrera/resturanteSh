@@ -9,6 +9,7 @@ const router = Router();
 router.get("/", calificacionesController.getCalificaciones);
 router.get("/admin", calificacionesController.getCalificacionesAdmin);
 router.delete("/admindeleteCal/:idcalificacion", calificacionesController.deleteCalificacionAdmin);
+router.post("/", calificacionesController.postCalificaciones);
 
 
 export default router;
