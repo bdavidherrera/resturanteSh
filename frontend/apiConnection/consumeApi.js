@@ -1,32 +1,32 @@
 //Rollos de la API
-const url = "http://localhost:8000/api/rollos"
-const urlRollos = "http://localhost:8000/api/rollos/RegistrarRollos"
-const urlActualizarRollos = "http://localhost:8000/api/rollos/ActualizarRollos"
-const urlEliminarRollos = "http://localhost:8000/api/rollos/EliminarRollos/:idrollos"
+const url = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/rollos"
+const urlRollos = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/rollos/RegistrarRollos"
+const urlActualizarRollos = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/rollos/ActualizarRollos"
+const urlEliminarRollos = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/rollos/EliminarRollos/:idrollos"
 
 //Categorias de la API
-const urlC = "http://localhost:8000/api/categorias"
-const urlRegistrarCategoria = "http://localhost:8000/api/categorias/RegistrarAdmin"
-const urlActualizarCategoria = "http://localhost:8000/api/categorias/ActualizarCategoria"
-const urlEliminarCategoria = "http://localhost:8000/api/categorias/EliminarCategoria/:idcategoria"
+const urlC = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/categorias"
+const urlRegistrarCategoria = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/categorias/RegistrarAdmin"
+const urlActualizarCategoria = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/categorias/ActualizarCategoria"
+const urlEliminarCategoria = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/categorias/EliminarCategoria/:idcategoria"
 
 //promociones de la API
-const urlP = "http://localhost:8000/api/Promociones"
-const urlRegistrarPromocion = "http://localhost:8000/api/promociones/Registrar"
-const urlActualizarPromocion = "http://localhost:8000/api/promociones/Actualizar"
-const urlEliminarPromocion = "http://localhost:8000/api/Promociones/EliminarPromociones/:idPromociones"
+const urlP = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/Promociones"
+const urlRegistrarPromocion = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/promociones/Registrar"
+const urlActualizarPromocion = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/promociones/Actualizar"
+const urlEliminarPromocion = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/Promociones/EliminarPromociones/:idPromociones"
 
 //Calificaciones de la API
-const urlCal = "http://localhost:8000/api/calificaciones"
-const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
-const urlEliminarCalificacionAdmin = "http://localhost:8000/api/calificaciones/admindeleteCal/:idcalificacion"
-const urlRegistrarCalificacion = "http://localhost:8000/api/calificaciones";
+const urlCal = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/calificaciones"
+const urlCalAdmin = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/calificaciones/admin"
+const urlEliminarCalificacionAdmin = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/calificaciones/admindeleteCal/:idcalificacion"
+const urlRegistrarCalificacion = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/calificaciones";
 //Usuarios de la API
-const urlRegistarUsu = "http://localhost:8000/Registrar";
-const urlLoginUsu = "http://localhost:8000/Login";
-const urlUsuarios = "http://localhost:8000/api/usuarios/admin"
-const urlActualizarUsuarios = "http://localhost:8000/api/usuarios/Actualizar";
-const  urlEliminarUsuarios = "http://localhost:8000/api/usuarios/EliminarUsuario/:idusuarios";
+const urlRegistarUsu = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/Registrar";
+const urlLoginUsu = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/Login";
+const urlUsuarios = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/usuarios/admin"
+const urlActualizarUsuarios = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/usuarios/Actualizar";
+const  urlEliminarUsuarios = "https://iki-sudhi-pokes-brayan-herrera-manuel.onrender.com/api/usuarios/EliminarUsuario/:idusuarios";
 
 export const obtainRollos = async ()=>{
     try {
