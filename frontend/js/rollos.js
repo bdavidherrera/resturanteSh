@@ -267,14 +267,36 @@ function aplicarFiltros() {
 
 // Configurar eventos del modal
 function configurarModalEventos() {
-    // Delegación de eventos para botones de ver detalle
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.btn-ver-detalle')) {
-            const rolloId = e.target.closest('.btn-ver-detalle').dataset.id;
+    // Delegación de eventos para ver detalles
+    document.addEventListener('click', function (e) {
+        const btnDetalle = e.target.closest('.btn-ver-detalle');
+        const btnCalificar = e.target.closest('#btn-calificar-cliente');
+
+        if (btnDetalle) {
+            const rolloId = btnDetalle.dataset.id;
             mostrarDetalleRollo(rolloId);
         }
+
+        // Si se hace clic en calificar
+        if (btnCalificar) {
+    const rolloId = parseInt(btnCalificar.dataset.id);
+    document.getElementById("fk_id_rollo").value = rolloId;
+    document.getElementById("fk_id_cliente").value = sessionStorage.getItem("idUsuario");
+
+    
+
+    // Primero cerrar el modal de detalles si está abierto
+    $('#rolloModal').modal('hide');
+
+    // Esperar a que se cierre completamente y abrir el de calificación
+    $('#rolloModal').on('hidden.bs.modal', () => {
+        $('#modalCalificar').modal('show');
     });
 }
+
+    });
+}
+
 
 // Mostrar detalle del rollo en modal
 function mostrarDetalleRollo(rolloId) {
@@ -342,3 +364,6 @@ function mostrarDetalleRollo(rolloId) {
 
 // Exportar funciones si es necesario
 export { mostrarRollos, configurarFiltros };
+
+
+

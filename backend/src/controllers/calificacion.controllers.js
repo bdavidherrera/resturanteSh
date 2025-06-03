@@ -14,7 +14,7 @@ const getCalificaciones = async (req, res)=>{
 
 const postCalificaciones = async (req, res) => {
   try {
-    const { comentario, fecha, fk_id_cliente, fk_id_rollo, puntuacion } = req.body;
+    const { comentario, fk_id_cliente, fk_id_rollo, puntuacion } = req.body;
 
     const calificacion = {
       comentario,
