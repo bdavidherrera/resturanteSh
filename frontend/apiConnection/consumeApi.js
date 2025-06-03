@@ -20,7 +20,7 @@ const urlEliminarPromocion = "http://localhost:8000/api/Promociones/EliminarProm
 const urlCal = "http://localhost:8000/api/calificaciones"
 const urlCalAdmin = "http://localhost:8000/api/calificaciones/admin"
 const urlEliminarCalificacionAdmin = "http://localhost:8000/api/calificaciones/admindeleteCal/:idcalificacion"
-
+const urlRegistrarCalificacion = "http://localhost:8000/api/calificaciones";
 //Usuarios de la API
 const urlRegistarUsu = "http://localhost:8000/Registrar";
 const urlLoginUsu = "http://localhost:8000/Login";
@@ -232,6 +232,21 @@ export const obtainCalificacionesAdmin = async ()=>{
     }
 }
 
+export const registrarCalificacion = async (datosCalificacion) => {
+    try {
+        const response = await fetch(`${urlRegistrarCalificacion}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosCalificacion)
+        });
+        const resultado = await response.json();
+        return resultado;
+    } catch (error) {
+        console.error("Error al registrar calificación:", error);
+    }
+}
 export const deleteCalificacionAdmin = async (idcalificacion) => {
     try {
         const response = await fetch(`${urlEliminarCalificacionAdmin.replace(':idcalificacion', idcalificacion)}`, {

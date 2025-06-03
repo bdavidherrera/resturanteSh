@@ -1,4 +1,4 @@
-import { obtainRollos } from "../apiConnection/consumeApi.js";
+import { obtainRollos , registrarCalificacion} from "../apiConnection/consumeApi.js";
 
 // Variables globales
 let rollosData = [];
@@ -279,11 +279,12 @@ function configurarModalEventos() {
 
         // Si se hace clic en calificar
         if (btnCalificar) {
+            
     const rolloId = parseInt(btnCalificar.dataset.id);
     document.getElementById("fk_id_rollo").value = rolloId;
     document.getElementById("fk_id_cliente").value = sessionStorage.getItem("idUsuario");
-
     
+
 
     // Primero cerrar el modal de detalles si está abierto
     $('#rolloModal').modal('hide');
